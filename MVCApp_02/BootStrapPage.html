@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet"/>
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <style>
+        .box{ border: 1px solid red;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">Hello</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 box alert">
+                <span class="text-primary">  Cell Spans 6 columns - Primary</span>
+                <button class="btn btn-primary btn-lg">Large Button</button>
+                <form class="form-group-lg">
+                    <label class="label">Enter Name:</label>
+                    <input type="text" class="form-control"/>
+                    <label class="label-info">Choose </label>
+                    <select class="form-control">
+                        <option>One</option>
+                        <option>Two</option>
+                    </select>
+                    <input type="submit" value="Send" class="btn btn-primary" />
+                </form>
+            </div>
+            <div class="col-md-3 box alert-danger">
+                <span class="text-danger">   Cell spans 3 columns - Danger
+                    <button class="btn btn-danger btn-xs">X-Small</button></span>
+</div>
+            <div class="col-md-3 box alert-info">
+                <span class="text-info">  Cell spans 3 columns - Info
+                    <button class="btn btn-info btn-sm">Small</button></span>
+</div>
+        </div>
+    <div class="row">
+        <div class="col-md-8 box alert-success">
+            <span class="text-success">   Cell Spans 8 columns - Success
+                <button class="btn btn-success btn-link">Link Button</button></span>
+</div>
+        <div class="col-md-4 box alert-warning">
+            <span class="text-warning">      Cell spans 4 columns - Warning
+                <button class="btn btn-warning btn-lg">Large Button</button></span>
+</div>
+       
+    </div>
+        </div>
+</body>
+</html>

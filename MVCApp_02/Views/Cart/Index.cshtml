@@ -1,0 +1,73 @@
+﻿@model MVCApp_02.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@{ 
+    AjaxOptions opts = new AjaxOptions
+    {
+       // UpdateTargetId = "tBody"
+    };
+}
+@{
+    using (Ajax.BeginForm("Index", opts))
+    { 
+
+        <text>Choose Categories:        </text>
+@Html.DropDownList("selectedCategory", new SelectList(Model.Categories, "CategoryId", "CategoryName", "SelectedCategory"),
+                                new { @class = "input-group form-control" });
+
+<button id="fetchButton" class="btn btn-md btn-primary">Fetch Products</button>
+<hr />
+
+@Html.Partial("ProductCategory", Model.Products)
+
+
+
+    }
+}
+    @*Products:
+<table class="table table-striped">    @*<thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+    <tbody id="tBody">
+
+    </tbody>
+
+</table>
+<script>
+    //$(document).ready(function () {
+    //    //    $("#fetchButton").click(function () {
+    //    $("#selectedCategory").change(function (){
+    //        //      alert("Fetch is clicked.");
+    //        var catId = $("#selectedCategory").val();
+    //        var URL = "/Cart/GetProducts/" + catId;
+            
+    //        $.ajax({
+    //            url: URL, method: "GET",
+    //            success: function (response) {
+    //                $("#tBody").empty();
+    //                $.each(response, function (index, value) {
+    //                    $("<tr><td>" + value.ProductId + "</td><td>" +
+    //                        value.ProductName + "</td><td>" +
+    //                        value.UnitPrice + "</td><td>" +
+    //                        value.UnitsInStock + "</td></tr>")
+    //                    .appendTo("#tBody");
+    //                });
+    //            },
+    //            error: function (err) {
+    //                alert(err);
+    //            }
+
+    //        });
+    //    });
+    //});
+</script>*@

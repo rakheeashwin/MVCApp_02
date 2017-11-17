@@ -1,0 +1,25 @@
+﻿@model MVCApp_02.Models.Model1
+
+@{
+    ViewBag.Title = "ModelV";
+    //   Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = ""; 
+    
+}
+
+<h2>ModelV</h2>
+
+<div>
+    <h4>Model1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>

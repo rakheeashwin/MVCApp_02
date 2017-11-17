@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MVCApp_02.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discontinued)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Update", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+
+            @Html.EditButtonHelper("Products", "Edit", item.ProductId.ToString())
+        </td>
+    </tr>
+}
+
+</table>*@
+@{ 
+    var grid = new WebGrid(
+        source: Model,
+        columnNames: new List<string> { "ProductName", "UnitPrice", "UnitsInStock","ProductId" },
+        canPage: true,
+        rowsPerPage: 10,
+        canSort: true
+
+        );
+}
+@*@grid.GetHtml(columns: new WebGridColumn[]
+{
+    new WebGridColumn {ColumnName="ProductName",Header="Product Name",CanSort=true },
+    new WebGridColumn {ColumnName="UnitPrice",Header="Price",CanSort=true,Style="width=50" },
+    new WebGridColumn {ColumnName="UnitsInStock",Header="Units in Stock",CanSort=true },
+})*@
+
+@grid.GetHtml(
+    
+    tableStyle: "table table-condensed table-striped table-hover",footerStyle: "pull-right",
+    columns: grid.Columns(
+        grid.Column(columnName:"ProductName", header:"Product Name"),
+        grid.Column(columnName: "UnitPrice", header: "Price"),
+grid.Column(columnName: "UnitsInStock", header: "Stock Level"),
+grid.Column("Actions",format:
+    @<text>
+<a href="/Products/Update/@item.ProductId">Edit
+    <img src="~/Images/edit.PNG" width="30" /></a>
+<a href="/Products/Details/@item.ProductId">
+    Details
+</a>
+
+<a href="/Products/Delete/@item.ProductId">
+    Delete
+</a>
+
+</text>)
+
+
+     )
+    )

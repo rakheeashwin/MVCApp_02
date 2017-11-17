@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <h2>Working with JQuery</h2>
+    <h1 id="h1" class="C1" style="color:cornflowerblue">Checking Styles</h1>
+    <style>
+        h1{color:black}
+        .C1{color:yellow}
+        #h1{color:green}
+    </style>
+    <div id="div1" class="oldStyle">
+        This is a div tag.
+    </div>
+    <div>
+         Another Div
+    </div>
+    <div>
+        yet another div
+    </div>
+
+    <style>
+        .oldStyle { background:linear-gradient(red,green);width:500px;height:50px;}
+        .newStyle {background:linear-gradient(white,red); color:black;}
+    </style>
+    <script>
+        $(document).ready(function () {
+          //  alert("Welcome to JQuery");
+            //  $("#div1").addClass("newStyle"); //ID Selector
+           // $("div").addClass("newStyle"); //Element Selector
+          //  $("div:nth-child(even)").addClass("newStyle"); //Pseudo-Selector
+           // $("oldStyle").removeClass("oldStyle");
+            var list = ["India", "China", "Spain", "Italy", "Germany", "Japan", "Egypt"];
+            $.each(list, function (index, value) {
+                $("<li>" + (index+1) + "." + value + "</li>").appendTo("#CountryList");
+            });
+            //classic javascript
+            //var btn = document.getElementById("btn1");
+            //btn1.addEventListener("click", function () {
+            //    document.getElementById("Para1").innerHTML = "text added";
+            //});
+
+            //jquery version 
+            $("#btn1").click(function () {
+                $("#Para1").html("Text added on Click");
+                $("#CountryList").empty();
+            });
+            $("#btn1").hover(function () {
+                $("#btn1").addClass("newStyle");
+            });
+            $("#btn1").mouseout(function () {
+                $("#btn1").removeClass("newStyle");
+            })
+        });
+    </script>
+    <div>
+        <ul id="CountryList"></ul>
+
+        <button id="btn1">Click Me!</button>
+        <p id="Para1"></p>
+    </div>
+   
+
+
+
+</body>
+</html>
